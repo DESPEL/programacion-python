@@ -1,0 +1,37 @@
+from copy import deepcopy
+
+from character import Character
+from renderable import Renderable
+
+from image_loader import load_console_sprite
+from gui import GUI, Point
+
+WIZARD_IMAGE = load_console_sprite("sprites/wizard.png")
+
+
+class Wizard(Character, Renderable):
+    def __init__(self, position):
+        Character.__init__(self, 15, 2, 3, 4, {
+            "ataque magico": 3,
+            "golpe": 2,
+            "patada": 1
+        })
+        self.position = Point(position.x, position.y + 1)
+        Renderable.__init__(self, deepcopy(WIZARD_IMAGE), self.position)
+
+    def print_hp(self):
+        hp_bar = self.get_hp_bar()
+        pos = Point(self.position.x, self.position.y - 1)
+        GUI.print(pos, hp_bar)
+
+
+if __name__ == "__main__":
+    from gui import Point
+    from colorama import init
+
+    init(True)
+
+    wizard = Wizard(Point(0, 0))
+    wizard.print_hp()
+    wizard.reflect()
+    print(wizard)
