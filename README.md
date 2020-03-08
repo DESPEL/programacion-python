@@ -1,2 +1,3 @@
-# programacion python
- Ejercicios de programación en python
+# Programación en python
+---
+Ejercicios/prácticas de Python3
