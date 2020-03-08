@@ -23,15 +23,3 @@ class Wizard(Character, Renderable):
         hp_bar = self.get_hp_bar()
         pos = Point(self.position.x, self.position.y - 1)
         GUI.print(pos, hp_bar)
-
-
-if __name__ == "__main__":
-    from gui import Point
-    from colorama import init
-
-    init(True)
-
-    wizard = Wizard(Point(0, 0))
-    wizard.print_hp()
-    wizard.reflect()
-    print(wizard)

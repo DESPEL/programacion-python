@@ -22,10 +22,9 @@ class Character:
         objective.defend(power)
 
     def defend(self, attack):
-        if random_event(self.evasion_rate / 100):
-            print("EVADED")
-            return
-        self.hp -= attack / (self.defense / 10)
+        evade = random_event(self.evasion_rate / 100)
+        if not evade:
+            self.hp -= attack / (self.defense / 10)
 
     def is_alive(self):
         return self.hp > 0

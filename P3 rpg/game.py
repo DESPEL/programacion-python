@@ -17,17 +17,12 @@ colorama.init(True)
 
 class Game:
     def __init__(self):
-        self.character_types = [
-            "Mago",
-            "Arquero",
-            "Guerrero"
-        ]
         self.character_constructor = {
             "Mago": Wizard,
             "Arquero": Archer,
             "Guerrero": Warrior
         }
-        pass
+        self.character_types = list(self.character_constructor.keys())
 
     def run(self):
         self.mode = self._get_game_mode()
@@ -84,6 +79,7 @@ class Game:
         attack_name = choice(list(self.computer.attacks.keys()))
         print(f"La computadora te ha atacado con: {attack_name}")
         self.computer.attack(self.player1, attack_name)
+        time.sleep(0.3)
 
     def _player_turn(self, from_player, to_player):
         attack_name = self._get_player_attack_name(from_player)
