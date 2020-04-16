@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "nombre": "David",
+            "apellido_paterno": "Espina",
+            "apellido_materno": "Lopez",
+            "sexo": "H",
+            "nacimiento": {
+                "dd": "18",
+                "mm": "3",
+                "yyyy": "2001"
+            },
+            "estado": "Oaxaca",
+            "curp": "EELD318HOCSPAG6"
+        }
+    ]
+}

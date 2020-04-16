@@ -1,0 +1,5 @@
+Para ejecutar:
+
+descomprimir la carpeta de sprites en el mismo folder de los archivos ".py", las imágenes deben de estar en una carpeta llamada sprites
+
+ejecutar: python game.py

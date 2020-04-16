@@ -22,6 +22,11 @@ class Game:
             "Arquero": Archer,
             "Guerrero": Warrior
         }
+        self.character_stat_strings = [
+            " HP: 15 STR: 2 DEF: 3 EV: 4",
+            " HP: 10 STR: 2 DEF: 3 EV: 5",
+            " HP: 10 STR: 5 DEF: 2 EV: 1"
+        ]
         self.character_types = list(self.character_constructor.keys())
 
     def run(self):
@@ -118,8 +123,10 @@ class Game:
 
     def _get_player_character_type(self):
         print("Seleccione su tipo de personaje:")
-        for idx, character in enumerate(self.character_types, 1):
-            print(f"{idx}) {character}")
+        for idx, (character, stats) in enumerate(
+            zip(self.character_types, self.character_stat_strings), 1
+        ):
+            print(f"{idx}) {character}, {stats}")
 
         character_type = safe_input(
             lambda x: x >= 1 and x <= len(self.character_types),
