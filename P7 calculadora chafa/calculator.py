@@ -4,7 +4,7 @@ from tkinter import ttk
 
 window = tk.Tk()
 
-win_font = tkFont.Font(family="Arial", size="20")
+win_font = tkFont.Font(family="Comic Sans", size="20")
 
 last_num = ""
 operations = {
@@ -83,17 +83,22 @@ settings = {
         "relwidth": 1/4,
         "relheight": 1/5
     },
+    "button2": {
+        "anchor": tk.NW,
+        "relwidth": 1/2,
+        "relheight": 1/5
+    },
     "style": {
         "numpad": {
             "btn": {
-                "bg": "gray",
+                "bg": "#163f4d",
                 "fg": "white",
                 "font": win_font
             }
         },
         "res": {
             "label": {
-                "bg": "black",
+                "bg": "#3b7588",
                 "fg": "white",
                 "font": win_font
             }
@@ -176,22 +181,27 @@ def gen_callback(i, j):
     return callback
 
 
-def place_button(button, row, column):
+def place_button(button, row, column, x=0):
+
+    xd = "button"
+    if x == 1:
+        xd = "button2"
     button.place(
-        **settings["button"],
+        **settings[xd],
         relx=column/settings["controls"]["columns"],
         rely=row/settings["controls"]["rows"]
+
     )
 
 
-def create_control_button(text, command, row, column):
+def create_control_button(text, command, row, column, x=0):
     button = tk.Button(
         controls,
         command=command,
         text=text,
         **settings["style"]["numpad"]["btn"]
     )
-    place_button(button, row, column)
+    place_button(button, row, column, x)
 
 
 def create_number_buttons():
@@ -200,12 +210,12 @@ def create_number_buttons():
             create_control_button(
                 str((i*3)+(j+1)),
                 gen_callback(i, j),
-                j+1, i
+                3-i, j
             )
     create_control_button(
         "0",
         gen_callback(0, -1),
-        settings["controls"]["rows"]-1, 0
+        settings["controls"]["rows"]-1, 0, 1
     )
 
 
@@ -218,3 +228,10 @@ create_number_buttons()
 create_operation_buttons()
 
 window.mainloop()
+
+
+test = []
+for i in range(100):
+    test.append(i**2+i)
+
+test = [i**2+i for i in range(100)]
