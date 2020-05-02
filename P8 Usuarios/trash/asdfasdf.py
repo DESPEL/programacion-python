@@ -1,0 +1,1 @@
+import numpy;(lambda sz: print(numpy.linalg.det(numpy.array([[float(input(f"Ingrese el elemento ({i}, {j})")) for i in range(sz)] for j in range(sz)]))))(int(input("Ingrese 3 si la matriz es 3x3 y 2 si es 2x2")))

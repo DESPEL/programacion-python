@@ -22,10 +22,13 @@ class Controller:
     def set_pages(self, frame_dict):
         self.frames = frame_dict
 
-    def show(self, name):
+    def show(self, name, *args, **kwargs):
         if name not in self.frames.keys():
             raise UnknownFrame()
         self.frames[name].tkraise()
+
+        if hasattr(self.frames[name], "update"):
+            self.frames[name].update(*args, **kwargs)
 
     def init_pages(self):
         for page in self.frames.values():
