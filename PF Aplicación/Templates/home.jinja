@@ -1,0 +1,21 @@
+{% extends 'template.jinja' %}
+
+{% block content %}
+    {% include "widgets/nav_bar.jinja" %}
+    <div class="container">
+        <h5>Bienvenido a tu pokedex personal</h5>
+        <p>Mediante esta app puedes ver todos los pokemons, en la seccion de Exlporar pokemons, al mismo tiempo los puedes agregar a favoritos, tu propia lista personalizada de los mismos.</p>
+        <p>Finalmente puedes personalizar la app elegiendo el tema de la misma, entre todos los que hay para elegir en la configuración</p>
+        <div class="row">
+            <div class="collection">
+                <a href="/pokemon_list" class="collection-item {{theme.bg_1}} {{theme.text_color}}">Explorar pokemons</a>
+            </div>
+            <div class="collection">
+                <a href="/favorites/0" class="collection-item {{theme.bg_1}} {{theme.text_color}}">Ver favoritos</a>
+            </div>
+            <div class="collection">
+                <a href="/settings" class="collection-item {{theme.bg_1}} {{theme.text_color}}">Configuración</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{
+    "hello-config": true,
+    "pokemon": {
+        "favorites": [
+            {
+                "name": "charizard",
+                "id": "6"
+            }
+        ]
+    },
+    "theme": "black"
+}

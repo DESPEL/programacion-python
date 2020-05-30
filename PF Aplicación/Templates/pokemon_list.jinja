@@ -1,0 +1,47 @@
+{% extends 'template.jinja' %}
+
+{% block content %}
+    {% include 'widgets/nav_bar.jinja' %}
+    <div class="container">
+        <div class="row"> 
+            <ul class="collection with-header">
+                <li class="collection-header {{theme.bg_1}}"><h4>Resultados {{number*10}} al {{number*10 + 10}}:</h4></li>
+            {% for poke in pokes %}
+                <li class="collection-item {{theme.bg_1}}">
+                    <a class="{{theme.text_color}}" href="/get/{{poke.name}}">{{poke.name.capitalize()}}</a>
+                    {% if poke.name in favs %}
+                        <a class="secondary-content" href="/add/{{number}}/{{poke.name}}/{{poke.url.split('/')[-2]}}"><i class="material-icons {{theme.enabled_star}}">star</i></a>
+                    {% else %}
+                        <a class="secondary-content" href="/add/{{number}}/{{poke.name}}/{{poke.url.split('/')[-2]}}"><i class="material-icons {{theme.disabled_star}}">star</i></a>
+                    {%endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <ul class="pagination center">
+            {% if number == 0 %}
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            {% else %}
+                <li><a href="/pokemon_list/{{number-1}}" class="{{theme.text_color}}"><i class="material-icons">chevron_left</i></a></li>
+            {% endif %}
+            
+            {% set start = 1 if number < 3 else number-2%}
+            {% set start = start if start < 93 else 93 %}
+            {% set end = 6 if number < 3 else number + 4 %}
+            {% set end = end if end < 98 else 98 %}
+            {% for i in range(start, end) %}
+                {% if i-1 == number%}
+                    <li class="waves-effect active {{theme.accent_2}}"><a class="{{theme.text_color}}" href="/pokemon_list/{{i-1}}">{{i}}</a></li>
+                {% else %}
+                    <li class="waves-effect"><a class="{{theme.text_color}}" href="/pokemon_list/{{i-1}}">{{i}}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if number >= 96 %}
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            {% else%}
+                <li class="waves-effect"><a class="{{theme.text_color}}" href="/pokemon_list/{{number+1}}"><i class="material-icons">chevron_right</i></a></li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}

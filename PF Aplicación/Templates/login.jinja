@@ -1,0 +1,22 @@
+{% extends "template.jinja" %}
+{% block content %}
+    {% include "widgets/nav_bar.jinja" %}
+    <div class="container">
+        <div class="row">
+            <div class="col s8 push-s2">
+                <h5>Iniciar sesión</h5>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div class=flashes>
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="divider"></div>
+                {% include "forms/login.jinja" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

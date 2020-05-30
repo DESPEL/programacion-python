@@ -1,0 +1,9 @@
+{% block theme_loader %}
+<script>
+$(document).ready(()=> {
+    $('div.select-wrapper ul').addClass('{{theme.bg_1}}')
+    $('div.select-wrapper ul li span').addClass('{{theme.text_color}}')
+    $('input.select-dropdown').addClass('{{theme.text_color}}')
+})
+</script>
+{% endblock %}

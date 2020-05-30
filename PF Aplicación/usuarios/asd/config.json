@@ -1,0 +1,6 @@
+{
+    "hello-config": true,
+    "pokemon": {
+        "favorites": []
+    }
+}

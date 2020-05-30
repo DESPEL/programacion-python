@@ -1,0 +1,13 @@
+{% extends "template.jinja" %}
+
+{% block content %}
+    {% include "widgets/nav_bar.jinja" %}
+    <div class="container">
+        <h4>App del pokemon</h4>
+        <div class="divider"></div>
+        <p>La aplicación de pokemons te permite ver una lista de los pokemons existentes y agregar a favoritos los que más te gusten</p>
+        <p>Si no tienes una cuenta, puedes registrarte en la sección de registro</p>
+        <h5>Registro</h5>
+        {% include 'forms/register.jinja'%}
+    </div>
+{% endblock %}

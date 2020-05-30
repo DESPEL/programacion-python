@@ -1,0 +1,52 @@
+{% extends 'template.jinja' %}
+
+{% block content %}
+    {% include 'widgets/nav_bar.jinja' %}
+    <div class="container">
+        
+        <div class="row"> 
+            <ul class="collection with-header">
+                <li class="collection-header {{theme.bg_1}}"><h4>Favoritos:</h4></li>
+                {%if tam_tot == 0 %}
+                    <li class="collection-item {{theme.bg_1}}">
+                            <a class="{{theme.text_color}}" href="/home">No tienes Favoritos</a>
+                    </li>
+                {% else %}
+                    {% for poke in pokes %}
+                        <li class="collection-item {{theme.bg_1}}">
+                            <a class="{{theme.text_color}}" href="/get/{{poke.name}}">{{poke.name.capitalize()}}</a>
+                            <a class="secondary-content" href="/remove/{{poke.name}}/{{poke.id}}/{{number}}"><i class="material-icons {{theme.enabled_star}}">star</i></a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+                </ul>
+            </div>
+            
+            <ul class="pagination center">
+                {% if number == 0 %}
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                {% else %}
+                    <li><a href="/favorites/{{number-1}}" class="{{theme.text_color}}"><i class="material-icons">chevron_left</i></a></li>
+                {% endif %}
+
+                {% set min_ = 0 if number <= 2 else number-1 %}
+                {% set max_ = min_+5 if min_+5 < pages else pages %}
+
+                {% for i in range(min_, max_) %}
+                    {% if i == number %}
+                        <li class="waves-effect active {{theme.accent}}"><a class="{{theme.text_color}}" href="/favorites/{{i}}">{{i+1}}</a></li>
+                    {% else %}
+                        <li class="waves-effect"><a class="{{theme.text_color}}" href="/favorites/{{i}}">{{i+1}}</a></li>
+                        {% endif %}
+                {% endfor %}
+
+                {% if number >= (pages - 1) %}
+                    <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                {% else%}
+                    <li class="waves-effect"><a class="{{theme.text_color}}" href="/favorites/{{number+1}}"><i class="material-icons">chevron_right</i></a></li>
+                {% endif %}
+        </ul>
+    </div>
+{% endblock %}
+
+

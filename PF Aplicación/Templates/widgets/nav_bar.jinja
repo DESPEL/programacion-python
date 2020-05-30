@@ -1,0 +1,24 @@
+{% block nav_bar %}
+<nav>
+    <div class="nav-wrapper {{theme.accent}}">
+        <ul class="left">
+            {% for link in page.nav.left_links %}
+                {% if link.session is defined and session.username is defined %}
+                    <li class="left"><a href="{{link.to}}">{{link.name}}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <a href="#" class="brand-logo center">{{page.name}}</a>
+        <ul class="right">
+            {% for link in page.nav.right_links %}
+                {% if link.session is defined and session.username is defined %}
+                    <li><a href="{{link.to}}">{{link.name}}</a></li>
+                {% endif %}
+                {% if link.session is not defined and session.username is not defined %}
+                    <li><a href="{{link.to}}">{{link.name}}</a></li>
+                {% endif %}
+            {% endfor %}
+            
+    </div>
+</nav>
+{% endblock %}

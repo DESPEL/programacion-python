@@ -1,0 +1,21 @@
+{% block login_form %}
+<div class="formwrapper">
+    <form action="/register" method="post">
+        {{ form.csrf_token }}
+        <div class="input-field">
+            {{form.username.label}} {{form.username(class_="input-field "+theme.text_color)}} {% for error in form.username.errors %}
+            <span class="helper-text red-text">{{error}}</span> {% endfor %}
+        </div>
+        <div class="input-field">
+            {{form.password.label}} {{form.password(class_="input-field "+theme.text_color)}} {% for error in form.password.errors %}
+            <span class="helper-text red-text">{{error}}</span> {% endfor %}
+        </div>
+        <div class="input-field">
+            {{form.password2.label}} {{form.password2(class_="input-field "+theme.text_color)}} {% for error in form.password2.errors %}
+            <span class="helper-text red-text">{{error}}</span> {% endfor %}
+        </div>
+        <br>
+        <input type="submit" value="Registrarse" class="btn right {{theme.accent_2}}">
+    </form>
+</div>
+{% endblock %}

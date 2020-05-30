@@ -1,0 +1,49 @@
+{% extends "template.jinja" %}
+{% block content %}
+    {% include 'widgets/nav_bar.jinja' %}
+    <div class="container">
+        <div class="row center">    
+            <img src="{{pokemon.sprites.front_default}}" alt="{{ pokemon.name.capitalize() }} sprite." width=300px style="margin-top: -10px; margin-bottom: -50px;">
+        </div>
+
+        <div class="row">
+            <table class="highlight centered-table">
+                <tr>
+                    <td> Pokedex Number: </td>            
+                    <td> {{ pokemon.id }} </td>
+                </tr>                
+                <tr>
+                    <td> Pokemon Name: </td>
+                    <td> {{ pokemon.name.capitalize() }}</td>
+                </tr>
+                <tr>
+                    <td> Type: </td>
+                    <td>
+                    {% for pokemonType in pokemon.types %}
+                        {{ pokemonType.type.name.capitalize() }}  
+                    {% endfor %}
+                    </td>
+                </tr>                
+                <tr>
+                    <td> Weight: </td>            
+                    <td> {{ pokemon.weight }} hg
+                    <div class="right">
+                        Height:           
+                        {{ pokemon.height }} dm </td>
+                    </div>
+                </tr>  
+                <tr>
+                <td> Abilities: </td>
+                {% for abilityResource in pokemon.abilities %}
+                <td style="display: flex;"> 
+                    <b> {{ abilityResource.ability.name.capitalize() }}: </b> {{ abilityResource.ability.effect_entries[0].short_effect }} 
+                </td>
+                {% endfor %}
+                </tr>
+
+            </table>
+        </>
+    </div>
+    
+
+{% endblock %}
