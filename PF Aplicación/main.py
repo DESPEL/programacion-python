@@ -33,7 +33,7 @@ from pokemons import (
 app = Flask(__name__, template_folder="Templates")
 app.config.from_object(FlaskConfig)
 
-# ui = FlaskUI(app=app, width=768, height=1024)
+ui = FlaskUI(app=app, width=768, height=800)
 
 def login_required(page):
     def wrapper(*args, **kwargs):
@@ -244,6 +244,6 @@ def set_setting():
     return redirect(url_for('settings'))
 
 
-app.run(debug=True)
-# ui.run()
+#app.run(debug=True)
+ui.run()
 

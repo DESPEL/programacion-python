@@ -228,6 +228,7 @@ class Config:
                 result[key.format(**values)] = Config.format(value, values)
             return result
         elif type(config) == list:
+            #pos ya no
             for value in config:
                 result.append(Config.format(value, values))
             return result
